@@ -1,15 +1,17 @@
+import React from 'react';
+import ReactDOM  from 'react-dom';
 import { useForm } from 'react-hook-form';
 
 export default function SignUpUser() {
     const {
         signUp,
+        formstate: { errors },
         handleSubmit,
-        formstate: { errors }
     } = useForm();
 
     const onSubmit = (data) => {
-        alert(data);
-        console.log(data);
+        alert(JSON.stringify(data));
+        console.log(JSON.stringify(data));
     }
 
     return(
@@ -21,9 +23,7 @@ export default function SignUpUser() {
                 className='SignUpUser__input'
                 {...signUp('fname', { required: true })}
             />
-            {errors.fname && (
-                <p className='SignUpUser__error'>First name is required</p>
-            )}
+            {errors.fname && (<p className='SignUpUser__error'>First name is required</p>)}
 
             <label className='SignUpUser__text'>Last Name</label>
             <input 
@@ -31,9 +31,7 @@ export default function SignUpUser() {
                 className='SignUpUser__input'
                 {...signUp('lname', { required: true })}
             />
-            {errors.lname && (
-                <p className='SignUpUser__error'>Last name is required</p>
-            )}
+            {errors.lname && (<p className='SignUpUser__error'>Last name is required</p>)}
 
             <label className='SignUpUser__text'>Username</label>
             <input 
@@ -41,9 +39,7 @@ export default function SignUpUser() {
                 className='SignUpUser__input'
                 {...signUp('uname', { required: true })}
             />
-            {errors.uname && (
-                <p className='SignUpUser__error'>Username is required</p>
-            )}
+            {errors.uname && (<p className='SignUpUser__error'>Username is required</p>)}
             
             <label className='SignUpUser__text'>Email</label>
             <input 
@@ -51,9 +47,7 @@ export default function SignUpUser() {
                 className='SignUpUser__input'
                 {...signUp('email', { required: true, pattern: /^\S+@\S+$/i })}
             />
-            {errors.email && (
-                <p className='SignUpUser__error'>Email is required and must be valid</p>
-            )}
+            {errors.email && (<p className='SignUpUser__error'>Email is required and must be valid</p>)}
             
             <label className='SignUpUser__text'>Password</label>
             <input 
@@ -61,19 +55,15 @@ export default function SignUpUser() {
                 className='SignUpUser__input'
                 {...signUp('pass', { required: true })}
             />
-            {errors.pass && (
-                <p className='SignUpUser__error'>Password is required</p>
-            )}
+            {errors.pass && (<p className='SignUpUser__error'>Password is required</p>)}
 
-<label className='SignUpUser__text'>Confirm Password</label>
+            <label className='SignUpUser__text'>Confirm Password</label>
             <input 
                 type='password'
                 className='SignUpUser__input'
                 {...signUp('cpass', { required: true })}
             />
-            {errors.pass && (
-                <p className='SignUpUser__error'>Password confirmation is required</p>
-            )}
+            {errors.pass && (<p className='SignUpUser__error'>Password confirmation is required</p>)}
 
             <button className='SignUpForm__button' type='submit'>
                 Submit

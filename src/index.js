@@ -10,6 +10,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <div className='AddProduct'>{<AddProduct />}</div>
+    <div className='SignUpUser'>{<SignUpUser />}</div>
   </React.StrictMode>
 );
 
