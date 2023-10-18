@@ -9,8 +9,7 @@ import SignUpUser from './components/SignUpUser/SignUpUser';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <AddProduct />
-    <SignUpUser />
+    <div className='AddProduct'>{<AddProduct />}</div>
   </React.StrictMode>
 );
 

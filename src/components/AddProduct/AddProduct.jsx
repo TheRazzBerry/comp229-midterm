@@ -1,72 +1,91 @@
 import React, { useState } from "react";
 
-function AddProduct() {
+export default function AddProduct() {
     const [formData, setFormData] = useState({
-        nam: "",
-        des: "",
-        cat: "",
-        qua: "",
-        pri: "",
+        name: "",
+        description: "",
+        category: "",
+        quantity: "",
+        price: "",
     });
 
     const handleChange = (event) => {
         const { name, value } = event.target;
-        setFormData((prevFormData) => ({ ...prevFormData, [name]: value}));
+        setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
     };
 
     const handleSubmit = (event) => {
-        event.preventDefault();
-        alert('Name: ${formData.nam}\nDescription: ${formData.des}\nCategory: ${formData.cat}\nQuantity: {formData.qua}\nPrice: {formData.pri}');
-        console.log(formData);
+        var alertString = formData.name + ", " + formData.description + ", " + formData.category + ", " + formData.quantity + ", " + formData.price;
+        console.log(alertString);
+        alert(alertString);
     };
 
     return(
         <form onSubmit={handleSubmit} className="addProduct">
+            <h3>Add Product</h3>
+            <label className="AddProduct__text" htmlFor="name">
+                Name: 
+            </label>
             <input
                 type="text"
                 id="name"
-                className="addProduct__input"
+                className="AddProduct__input"
                 name="name"
-                value={formData.nam}
+                value={formData.name}
                 onChange={handleChange}
-            />
+            /><br></br>
+
+            <label className="AddProduct__text" htmlFor="description">
+                Description: 
+            </label>
             <input
                 type="text"
                 id="description"
-                className="addProduct__input"
+                className="AddProduct__input"
                 name="description"
-                value={formData.des}
+                value={formData.description}
                 onChange={handleChange}
-            />
+            /><br></br>
+
+            <label className="AddProduct__text" htmlFor="category">
+                Category: 
+            </label>
             <input
                 type="text"
                 id="category"
-                className="addProduct__input"
+                className="AddProduct__input"
                 name="category"
-                value={formData.cat}
+                value={formData.category}
                 onChange={handleChange}
-            />
+            /><br></br>
+
+            <label className="AddProduct__text" htmlFor="quantity">
+                Quanitity: 
+            </label>
             <input
                 type="text"
                 id="quantity"
-                className="addProduct__input"
+                className="AddProduct__input"
                 name="quantity"
-                value={formData.qua}
+                value={formData.quantity}
                 onChange={handleChange}
-            />
+            /><br></br>
+
+            <label className="AddProduct__text" htmlFor="price">
+                Price: 
+            </label>
             <input
                 type="text"
                 id="price"
-                className="addProduct__input"
+                className="AddProduct__input"
                 name="price"
-                value={formData.pri}
+                value={formData.price}
                 onChange={handleChange}
-            />
-            <button className="addProduct__button" type="submit">
+            /><br></br>
+
+            <button className="AddProduct__button" type="submit">
                 Submit
             </button>
         </form>
     );
 }
-
-export default AddProduct;

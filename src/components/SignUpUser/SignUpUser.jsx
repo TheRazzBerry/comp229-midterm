@@ -1,10 +1,10 @@
 import { useForm } from 'react-hook-form';
 
-function SignUpUser() {
+export default function SignUpUser() {
     const {
         signUp,
         handleSubmit,
-        formstate: { errors },
+        formstate: { errors }
     } = useForm();
 
     const onSubmit = (data) => {
@@ -14,6 +14,7 @@ function SignUpUser() {
 
     return(
         <form onSubmit={handleSubmit(onSubmit)} className="SignUpUser">
+            <h3>Sign Up User</h3>
             <label className='SignUpUser__text'>First Name</label>
             <input 
                 type='text'
@@ -64,11 +65,19 @@ function SignUpUser() {
                 <p className='SignUpUser__error'>Password is required</p>
             )}
 
+<label className='SignUpUser__text'>Confirm Password</label>
+            <input 
+                type='password'
+                className='SignUpUser__input'
+                {...signUp('cpass', { required: true })}
+            />
+            {errors.pass && (
+                <p className='SignUpUser__error'>Password confirmation is required</p>
+            )}
+
             <button className='SignUpForm__button' type='submit'>
                 Submit
             </button>
         </form>
     );
 }
-
-export default SignUpUser;
