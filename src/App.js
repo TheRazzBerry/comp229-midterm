@@ -2,10 +2,8 @@ import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>Nothing is here yet...</p>
-      </header>
+    <div className="AddProduct">
+      {<AddProduct />}
     </div>
   );
 }
